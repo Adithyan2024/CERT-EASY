@@ -42,6 +42,15 @@ import { AnimatePresence, motion, useScroll } from "framer-motion";
 import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
 import Certeasy from "./assets/certzey.png"
+import securityImage from "../assets/security.png";
+import cloud from "../assets/cloud.png"
+import cyber from "../assets/cyber.png"
+import network from "../assets/network+.png"
+import pmp from "../assets/PMP.png";
+import advancedCyber from "../assets/advanced cyber.png"
+import security from "../assets/Add-a-subheading-1.png"
+import cloud2 from "../assets/cloud-essentials2.png"
+import project from "../assets/project.png"
 
 type Page = "home" | "courses" | "courseDetail";
 
@@ -284,7 +293,7 @@ export default function App() {
               <div className="flex items-center gap-2 mb-4 cursor-pointer" onClick={handleBackToHome}>
                 <div className="w-30 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center overflow-hidden">
                   <img
-                    src="../src/assets/certzey.png"
+                    src={Certeasy}
                     alt="Cert-Easy Logo"
                     className="w-25 h-25 object-cover"
                     onError={(e) => {
@@ -370,12 +379,12 @@ export default function App() {
   }
 
   const courses = [
-    { id: 1, title: "CompTIA Security+ Certification", image: "../src/assets/Add-a-subheading-1.png", price: 299, rating: 4.8, students: 12450, badge: "Best Seller", level: "Intermediate", duration: "40 hours" },
-    { id: 2, title: "AWS Certified Solutions Architect", image: "../src/assets/cloud-essentials2.png", price: 399, rating: 4.9, students: 18230, badge: "Popular", level: "Advanced", duration: "60 hours" },
-    { id: 3, title: "Project Management Professional (PMP)", image: "../src/assets/PMP.png", price: 349, rating: 4.7, students: 9870, badge: "Trending", level: "Professional", duration: "50 hours" },
-    { id: 4, title: "Certified Ethical Hacker (CEH)", image: "../src/assets/cyber.png", price: 449, rating: 4.9, students: 15600, badge: "Best Seller", level: "Advanced", duration: "45 hours" },
-    { id: 5, title: "Microsoft Azure Fundamentals", image: "../src/assets/cloud.png", price: 249, rating: 4.6, students: 11200, badge: "New", level: "Beginner", duration: "30 hours" },
-    { id: 6, title: "CISSP - Information Security", image: "../src/assets/security.png", price: 499, rating: 4.8, students: 8950, badge: "Premium", level: "Expert", duration: "70 hours" },
+    { id: 1, title: "CompTIA Security+ Certification", image: {security}, price: 299, rating: 4.8, students: 12450, badge: "Best Seller", level: "Intermediate", duration: "40 hours" },
+    { id: 2, title: "AWS Certified Solutions Architect", image: {cloud}, price: 399, rating: 4.9, students: 18230, badge: "Popular", level: "Advanced", duration: "60 hours" },
+    { id: 3, title: "Project Management Professional (PMP)", image: {pmp}, price: 349, rating: 4.7, students: 9870, badge: "Trending", level: "Professional", duration: "50 hours" },
+    { id: 4, title: "Certified Ethical Hacker (CEH)", image: {security}, price: 449, rating: 4.9, students: 15600, badge: "Best Seller", level: "Advanced", duration: "45 hours" },
+    { id: 5, title: "Microsoft Azure Fundamentals", image: {cloud2}, price: 249, rating: 4.6, students: 11200, badge: "New", level: "Beginner", duration: "30 hours" },
+    { id: 6, title: "CISSP - Information Security", image: {security}, price: 499, rating: 4.8, students: 8950, badge: "Premium", level: "Expert", duration: "70 hours" },
   ];
 
   const testimonials = [
@@ -537,7 +546,7 @@ export default function App() {
                   <Card className="overflow-hidden border-0 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 group h-full bg-white">
                     <div className="relative overflow-hidden">
                       <div className="aspect-video overflow-hidden">
-                        <ImageWithFallback src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        {/* <ImageWithFallback {course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" /> */}
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <Badge className="absolute top-4 right-4 bg-gradient-to-r from-slate-700 to-slate-900 text-white shadow-lg" style={{ fontWeight: 600 }}>{course.badge}</Badge>
