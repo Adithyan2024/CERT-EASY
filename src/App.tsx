@@ -381,12 +381,12 @@ export default function App() {
   }
 
   const courses = [
-    { id: 1, title: "CompTIA Security+ Certification", image: {security}, price: 299, rating: 4.8, students: 12450, badge: "Best Seller", level: "Intermediate", duration: "40 hours" },
-    { id: 2, title: "AWS Certified Solutions Architect", image: {cloud}, price: 399, rating: 4.9, students: 18230, badge: "Popular", level: "Advanced", duration: "60 hours" },
-    { id: 3, title: "Project Management Professional (PMP)", image: {pmp}, price: 349, rating: 4.7, students: 9870, badge: "Trending", level: "Professional", duration: "50 hours" },
-    { id: 4, title: "Certified Ethical Hacker (CEH)", image: {security}, price: 449, rating: 4.9, students: 15600, badge: "Best Seller", level: "Advanced", duration: "45 hours" },
-    { id: 5, title: "Microsoft Azure Fundamentals", image: {cloud2}, price: 249, rating: 4.6, students: 11200, badge: "New", level: "Beginner", duration: "30 hours" },
-    { id: 6, title: "CISSP - Information Security", image: {security}, price: 499, rating: 4.8, students: 8950, badge: "Premium", level: "Expert", duration: "70 hours" },
+    { id: 1, title: "CompTIA Security+ Certification", image: security, price: 299, rating: 4.8, students: 12450, badge: "Best Seller", level: "Intermediate", duration: "40 hours" },
+    { id: 2, title: "AWS Certified Solutions Architect", image: cloud, price: 399, rating: 4.9, students: 18230, badge: "Popular", level: "Advanced", duration: "60 hours" },
+    { id: 3, title: "Project Management Professional (PMP)", image: pmp, price: 349, rating: 4.7, students: 9870, badge: "Trending", level: "Professional", duration: "50 hours" },
+    { id: 4, title: "Certified Ethical Hacker (CEH)", image: security, price: 449, rating: 4.9, students: 15600, badge: "Best Seller", level: "Advanced", duration: "45 hours" },
+    { id: 5, title: "Microsoft Azure Fundamentals", image: cloud2, price: 249, rating: 4.6, students: 11200, badge: "New", level: "Beginner", duration: "30 hours" },
+    { id: 6, title: "CISSP - Information Security", image: security, price: 499, rating: 4.8, students: 8950, badge: "Premium", level: "Expert", duration: "70 hours" },
   ];
 
   const testimonials = [
