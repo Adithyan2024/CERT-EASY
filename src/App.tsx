@@ -547,7 +547,7 @@ export default function App() {
                   <Card className="overflow-hidden border-0 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 group h-full bg-white">
                     <div className="relative overflow-hidden">
                       <div className="aspect-video overflow-hidden">
-                        <ImageWithFallback src={course.image.security} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <ImageWithFallback src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <Badge className="absolute top-4 right-4 bg-gradient-to-r from-slate-700 to-slate-900 text-white shadow-lg" style={{ fontWeight: 600 }}>{course.badge}</Badge>
