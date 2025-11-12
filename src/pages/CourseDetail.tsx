@@ -9,7 +9,7 @@ import {
   BookOpen, Target, TrendingUp, ArrowLeft, MessageCircle,
   FileText, Video, Download, Shield
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion } from "framer-motion";
 import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar';
 import { Separator } from '../components/ui/separator';
 import { Progress } from '../components/ui/progress';

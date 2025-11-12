@@ -38,7 +38,7 @@ import {
   Heart,
   MessageCircle,
 } from "lucide-react";
-import { motion, useScroll, AnimatePresence } from "motion/react";
+import { motion } from "framer-motion";
 import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
 
