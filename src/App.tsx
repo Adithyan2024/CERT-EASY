@@ -41,6 +41,7 @@ import {
 import { AnimatePresence, motion, useScroll } from "framer-motion";
 import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
+import Certeasy from "./assets/certzey.png"
 
 type Page = "home" | "courses" | "courseDetail";
 
@@ -185,7 +186,7 @@ export default function App() {
               <motion.div className="flex items-center gap-2 cursor-pointer" whileTap={{ scale: 0.95 }} onClick={handleBackToHome}>
                 <div className="flex items-center justify-center h-20 w-30">
                   <img
-                    src="../src/assets/certzey.png"
+                    src={Certeasy}
                     alt="Cert-Easy Logo"
                     className="h-full w-full object-contain"
                     onError={(e) => {
