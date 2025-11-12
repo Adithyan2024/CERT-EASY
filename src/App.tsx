@@ -45,13 +45,13 @@ import CourseDetail from "./pages/CourseDetail";
 import Certeasy from "./assets/certzey.png"
 import securityImage from "./assets/security.png";
 import cloud from "./assets/cloud.png"
-import cyber from "../assets/cyber.png"
-import network from "../assets/network+.png"
+import cyber from "./assets/cyber.png"
+import network from "./assets/network+.png"
 import pmp from "./assets/PMP.png";
-import advancedCyber from "../assets/advanced cyber.png"
+import advancedCyber from "./assets/advanced cyber.png"
 import security from "./assets/Add-a-subheading-1.png"
 import cloud2 from "./assets/cloud-essentials2.png"
-import project from "../assets/project.png"
+import project from "./assets/project.png"
 
 type Page = "home" | "courses" | "courseDetail";
 
