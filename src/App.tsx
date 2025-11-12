@@ -52,6 +52,7 @@ import advancedCyber from "./assets/advanced cyber.png"
 import security from "./assets/Add-a-subheading-1.png"
 import cloud2 from "./assets/cloud-essentials2.png"
 import project from "./assets/project.png"
+import mainpic from "./assets/pexels-mart-production-7255775.jpg"
 
 type Page = "home" | "courses" | "courseDetail";
 
@@ -487,7 +488,7 @@ export default function App() {
 
               <motion.div className="relative" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
                 <motion.div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-slate-500/20 relative" whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
-                  <ImageWithFallback src="../src/assets/pexels-mart-production-7255775.jpg" alt="Online learning" className="w-full h-full object-cover" />
+                  <ImageWithFallback src={mainpic} alt="Online learning" className="w-full h-full object-cover" />
                   <div className="absolute inset-0" style={{ backgroundColor: '#247AB0', opacity: 0.84, transition: 'background 0.3s, border-radius 0.3s, opacity 0.3s' }} />
                 </motion.div>
 
@@ -547,7 +548,7 @@ export default function App() {
                   <Card className="overflow-hidden border-0 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 group h-full bg-white">
                     <div className="relative overflow-hidden">
                       <div className="aspect-video overflow-hidden">
-                        <ImageWithFallback src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <ImageWithFallback src={course.image.security} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <Badge className="absolute top-4 right-4 bg-gradient-to-r from-slate-700 to-slate-900 text-white shadow-lg" style={{ fontWeight: 600 }}>{course.badge}</Badge>
