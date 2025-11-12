@@ -42,7 +42,7 @@ import {
 import { AnimatePresence, motion, useScroll } from "framer-motion";
 import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
-import Certeasy from "./assets/certzey.png"
+import certeasy from "./assets/certzey.png"
 import securityImage from "./assets/security.png";
 import cloud from "./assets/cloud.png"
 import cyber from "./assets/cyber.png"
@@ -196,7 +196,7 @@ export default function App() {
               <motion.div className="flex items-center gap-2 cursor-pointer" whileTap={{ scale: 0.95 }} onClick={handleBackToHome}>
                 <div className="flex items-center justify-center h-20 w-30">
                   <img
-                    src={Certeasy}
+                    src={certeasy}
                     alt="Cert-Easy Logo"
                     className="h-full w-full object-contain"
                     onError={(e) => {
@@ -294,7 +294,7 @@ export default function App() {
               <div className="flex items-center gap-2 mb-4 cursor-pointer" onClick={handleBackToHome}>
                 <div className="w-30 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center overflow-hidden">
                   <img
-                    src={Certeasy}
+                    src={certeasy}
                     alt="Cert-Easy Logo"
                     className="w-25 h-25 object-cover"
                     onError={(e) => {
