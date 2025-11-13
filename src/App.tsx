@@ -42,7 +42,7 @@ import {
 import { AnimatePresence, motion, useScroll } from "framer-motion";
 import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
-import certeasy from "./assets/certzey.png"
+import certeasy from "./assets/logo png.png"
 import securityImage from "./assets/security.png";
 import cloud from "./assets/cloud.png"
 import cyber from "./assets/cyber.png"
