@@ -64,7 +64,7 @@ export default function App() {
   const [showWhatsApp, setShowWhatsApp] = useState(false);
   const { scrollYProgress } = useScroll();
 
-  const whatsappNumber = "8482971003";
+  const whatsappNumber = "18482971003";
   const whatsappMessage = "Hi Cert-Easy! I would like to know more about your certification courses.";
 
   const [stats, setStats] = useState({
