@@ -1,43 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button } from "./components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "./components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "./components/ui/card";
 import { Badge } from "./components/ui/badge";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "./components/ui/carousel";
-import {
-  Menu,
-  X,
-  Star,
-  Award,
-  BookOpen,
-  Users,
-  Clock,
-  CheckCircle2,
-  Shield,
-  TrendingUp,
-  Sparkles,
-  Mail,
-  Phone,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-  ArrowRight,
-  Heart,
-  MessageCircle,
-} from "lucide-react";
-
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./components/ui/carousel";
+import { Menu, X, Star, Award, BookOpen, Users, Clock, CheckCircle2, Shield, TrendingUp, Sparkles, Mail, Phone, Facebook, Twitter, Linkedin, Instagram, ArrowRight, Heart, MessageCircle } from "lucide-react";
 import { AnimatePresence, motion, useScroll } from "framer-motion";
 import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
@@ -62,17 +29,9 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [showWhatsApp, setShowWhatsApp] = useState(false);
   const { scrollYProgress } = useScroll();
-
   const whatsappNumber = "18482971003";
-  const whatsappMessage =
-    "Hi Cert-Easy! I would like to know more about your certification courses.";
-
-  const [stats, setStats] = useState({
-    students: 0,
-    courses: 0,
-    instructors: 0,
-    satisfaction: 0,
-  });
+  const whatsappMessage = "Hi Cert-Easy! I would like to know more about your certification courses.";
+  const [stats, setStats] = useState({ students: 0, courses: 0, instructors: 0, satisfaction: 0 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,16 +43,10 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const targets = {
-      students: 50000,
-      courses: 150,
-      instructors: 200,
-      satisfaction: 98,
-    };
+    const targets = { students: 50000, courses: 150, instructors: 200, satisfaction: 98 };
     const duration = 2000;
     const steps = 60;
     const interval = duration / steps;
-
     let step = 0;
     const timer = setInterval(() => {
       step++;
@@ -103,20 +56,16 @@ export default function App() {
         instructors: Math.floor((targets.instructors / steps) * step),
         satisfaction: Math.floor((targets.satisfaction / steps) * step),
       });
-
       if (step >= steps) {
         setStats(targets);
         clearInterval(timer);
       }
     }, interval);
-
     return () => clearInterval(timer);
   }, []);
 
   const handleWhatsAppClick = () => {
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(url, "_blank");
   };
 
@@ -154,10 +103,7 @@ export default function App() {
     return (
       <>
         <Header />
-        <Courses
-          onCourseClick={handleCourseClick}
-          onWhatsAppClick={handleWhatsAppClick}
-        />
+        <Courses onCourseClick={handleCourseClick} onWhatsAppClick={handleWhatsAppClick} />
         <Footer />
       </>
     );
@@ -167,11 +113,7 @@ export default function App() {
     return (
       <>
         <Header />
-        <CourseDetail
-          courseId={selectedCourseId}
-          onBack={handleBackToCourses}
-          onWhatsAppClick={handleWhatsAppClick}
-        />
+        <CourseDetail courseId={selectedCourseId} onBack={handleBackToCourses} onWhatsAppClick={handleWhatsAppClick} />
         <Footer />
       </>
     );
@@ -180,176 +122,63 @@ export default function App() {
   function Header() {
     return (
       <>
-        <motion.div
-          className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-slate-700 via-teal-600 to-indigo-600 z-[100] origin-left"
-          style={{ scaleX: scrollYProgress }}
-        />
-
+        <motion.div className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-slate-700 via-teal-600 to-indigo-600 z-[100] origin-left" style={{ scaleX: scrollYProgress }} />
         <AnimatePresence>
           {showWhatsApp && (
-            <motion.button
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={handleWhatsAppClick}
-              className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-2xl flex items-center justify-center text-white hover:from-green-600 hover:to-green-700 transition-all group"
-              aria-label="Contact us on WhatsApp"
-            >
+            <motion.button initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0, opacity: 0 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={handleWhatsAppClick} className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-2xl flex items-center justify-center text-white hover:from-green-600 hover:to-green-700 transition-all group" aria-label="Contact us on WhatsApp">
               <MessageCircle className="w-8 h-8 group-hover:scale-110 transition-transform" />
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-pulse" />
             </motion.button>
           )}
         </AnimatePresence>
-
-        <motion.header
-          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-            scrolled
-              ? "bg-white/95 backdrop-blur-xl shadow-lg border-b border-slate-200/50"
-              : "bg-white shadow-sm"
-          }`}
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <motion.header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-xl shadow-lg border-b border-slate-200/50" : "bg-white shadow-sm"}`} initial={{ y: 0, opacity: 1 }} animate={{ y: 0, opacity: 1 }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-20">
-              <motion.div
-                className="flex items-center gap-2 cursor-pointer"
-                whileTap={{ scale: 0.95 }}
-                onClick={handleBackToHome}
-              >
+              <motion.div className="flex items-center gap-2 cursor-pointer" whileTap={{ scale: 0.95 }} onClick={handleBackToHome}>
                 <div className="flex items-center justify-center h-12 w-auto">
-                  <img
-                    src={certeasy}
-                    alt="Cert-Easy Logo"
-                    className="h-full w-auto object-contain max-w-[150px]"
-                    onError={(e) => {
-                      const parent = e.currentTarget.parentElement;
-                      if (parent) {
-                        e.currentTarget.style.display = "none";
-                        parent.innerHTML =
-                          '<div class="h-12 w-12 bg-gradient-to-br from-slate-700 via-teal-600 to-indigo-700 rounded-lg flex items-center justify-center"><svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg></div>';
-                      }
-                    }}
-                  />
+                  <img src={certeasy} alt="Cert-Easy Logo" className="h-full w-auto object-contain max-w-[150px]" onError={(e) => { const parent = e.currentTarget.parentElement; if (parent) { e.currentTarget.style.display = "none"; parent.innerHTML = '<div class="h-12 w-12 bg-gradient-to-br from-slate-700 via-teal-600 to-indigo-700 rounded-lg flex items-center justify-center"><svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg></div>'; } }} />
                 </div>
               </motion.div>
-
               <nav className="hidden md:flex items-center gap-8">
-                {[
-                  { name: "Home", onClick: handleBackToHome },
-                  { name: "Courses", onClick: navigateToCourses },
-                  { name: "About Us", onClick: () => scrollToSection("about") },
-                  {
-                    name: "Contact",
-                    onClick: () => scrollToSection("contact"),
-                  },
-                ].map((item, index) => (
-                  <motion.button
-                    key={item.name}
-                    onClick={item.onClick}
-                    className="text-slate-700 hover:text-slate-900 transition-colors relative group"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
+                {[{ name: "Home", onClick: handleBackToHome }, { name: "Courses", onClick: navigateToCourses }, { name: "About Us", onClick: () => scrollToSection("about") }, { name: "Contact", onClick: () => scrollToSection("contact") }].map((item, index) => (
+                  <motion.button key={item.name} onClick={item.onClick} className="text-slate-700 hover:text-slate-900 transition-colors relative group" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }}>
                     {item.name}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-slate-700 to-teal-600 transition-all group-hover:w-full" />
                   </motion.button>
                 ))}
               </nav>
-
               <div className="hidden md:flex items-center gap-4">
-                <Button
-                  variant="ghost"
-                  className="text-slate-700 hover:text-slate-900"
-                >
-                  Login
-                </Button>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Button className="bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black text-white shadow-lg shadow-slate-500/30">
-                    Sign Up
-                  </Button>
+                <Button variant="ghost" className="text-slate-700 hover:text-slate-900">Login</Button>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button className="bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black text-white shadow-lg shadow-slate-500/30">Sign Up</Button>
                 </motion.div>
               </div>
-
-              <motion.button
-                className="md:hidden p-2 hover:bg-slate-100 rounded-lg transition-colors"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                whileTap={{ scale: 0.9 }}
-              >
+              <motion.button className="md:hidden p-2 hover:bg-slate-100 rounded-lg transition-colors" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} whileTap={{ scale: 0.9 }}>
                 <AnimatePresence mode="wait">
                   {mobileMenuOpen ? (
-                    <motion.div
-                      key="close"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                    >
+                    <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
                       <X className="w-6 h-6" />
                     </motion.div>
                   ) : (
-                    <motion.div
-                      key="menu"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                    >
+                    <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
                       <Menu className="w-6 h-6" />
                     </motion.div>
                   )}
                 </AnimatePresence>
               </motion.button>
             </div>
-
             <AnimatePresence>
               {mobileMenuOpen && (
-                <motion.div
-                  className="md:hidden py-4 border-t"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
+                <motion.div className="md:hidden py-4 border-t" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }}>
                   <nav className="flex flex-col gap-4">
-                    {[
-                      { name: "Home", onClick: handleBackToHome },
-                      { name: "Courses", onClick: navigateToCourses },
-                      {
-                        name: "About Us",
-                        onClick: () => scrollToSection("about"),
-                      },
-                      {
-                        name: "Contact",
-                        onClick: () => scrollToSection("contact"),
-                      },
-                    ].map((item, index) => (
-                      <motion.button
-                        key={item.name}
-                        onClick={item.onClick}
-                        className="text-slate-700 hover:text-slate-900 transition-colors px-2 py-1 text-left"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                      >
+                    {[{ name: "Home", onClick: handleBackToHome }, { name: "Courses", onClick: navigateToCourses }, { name: "About Us", onClick: () => scrollToSection("about") }, { name: "Contact", onClick: () => scrollToSection("contact") }].map((item, index) => (
+                      <motion.button key={item.name} onClick={item.onClick} className="text-slate-700 hover:text-slate-900 transition-colors px-2 py-1 text-left" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.1 }}>
                         {item.name}
                       </motion.button>
                     ))}
                     <div className="flex flex-col gap-2 pt-4 border-t">
-                      <Button
-                        variant="ghost"
-                        className="text-slate-700 hover:text-slate-900 w-full"
-                      >
-                        Login
-                      </Button>
-                      <Button className="bg-gradient-to-r from-slate-700 to-slate-900 text-white w-full">
-                        Sign Up
-                      </Button>
+                      <Button variant="ghost" className="text-slate-700 hover:text-slate-900 w-full">Login</Button>
+                      <Button className="bg-gradient-to-r from-slate-700 to-slate-900 text-white w-full">Sign Up</Button>
                     </div>
                   </nav>
                 </motion.div>
@@ -363,173 +192,49 @@ export default function App() {
 
   function Footer() {
     return (
-      <footer
-        className="py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-        style={{ backgroundColor: "#EEF1F7" }}
-      >
+      <footer className="py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: "#EEF1F7" }}>
         <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 2px 2px, #247AB0 1px, transparent 0)",
-              backgroundSize: "40px 40px",
-            }}
-          />
+          <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, #247AB0 1px, transparent 0)", backgroundSize: "40px 40px" }} />
         </div>
-
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
-           <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div
-                className="flex items-center gap-2 mb-4 cursor-pointer"
-                onClick={handleBackToHome}
-              >
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <div className="flex items-center gap-2 mb-4 cursor-pointer" onClick={handleBackToHome}>
                 <div className="w-auto h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center overflow-hidden px-3">
-                  <img
-                    src={certeasy}
-                    alt="Cert-Easy Logo"
-                    className="h-10 w-auto object-contain max-w-[120px]"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                      const parent = e.currentTarget.parentElement;
-                      if (parent) {
-                        const svg = document.createElementNS(
-                          "http://www.w3.org/2000/svg",
-                          "svg"
-                        );
-                        svg.setAttribute("class", "w-8 h-8 text-white");
-                        svg.setAttribute("fill", "none");
-                        svg.setAttribute("stroke", "currentColor");
-                        svg.setAttribute("viewBox", "0 0 24 24");
-                        svg.innerHTML =
-                          '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>';
-                        parent.appendChild(svg);
-                      }
-                    }}
-                  />
+                  <img src={certeasy} alt="Cert-Easy Logo" className="h-10 w-auto object-contain max-w-[120px]" onError={(e) => { e.currentTarget.style.display = "none"; const parent = e.currentTarget.parentElement; if (parent) { const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("class", "w-8 h-8 text-white"); svg.setAttribute("fill", "none"); svg.setAttribute("stroke", "currentColor"); svg.setAttribute("viewBox", "0 0 24 24"); svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>'; parent.appendChild(svg); } }} />
                 </div>
               </div>
-              <p className="mb-4" style={{ color: "#4A5568" }}>
-                Your trusted partner for professional certification training and
-                career advancement.
-              </p>
-              <motion.button
-                onClick={handleWhatsAppClick}
-                className="flex items-center gap-2 transition-colors"
-                style={{ color: "#247AB0" }}
-                whileHover={{ scale: 1.05 }}
-              >
+              <p className="mb-4" style={{ color: "#4A5568" }}>Your trusted partner for professional certification training and career advancement.</p>
+              <motion.button onClick={handleWhatsAppClick} className="flex items-center gap-2 transition-colors" style={{ color: "#247AB0" }} whileHover={{ scale: 1.05 }}>
                 <MessageCircle className="w-5 h-5" />
                 <span>Chat on WhatsApp</span>
               </motion.button>
             </motion.div>
-
-            {[
-              {
-                title: "Quick Links",
-                links: [
-                  { name: "Home", onClick: handleBackToHome },
-                  { name: "Courses", onClick: navigateToCourses },
-                  { name: "About Us", onClick: () => scrollToSection("about") },
-                  {
-                    name: "Contact",
-                    onClick: () => scrollToSection("contact"),
-                  },
-                ],
-              },
-              {
-                title: "Certifications",
-                links: [
-                  { name: "CompTIA", onClick: () => {} },
-                  { name: "AWS", onClick: () => {} },
-                  { name: "PMI", onClick: () => {} },
-                  { name: "Microsoft", onClick: () => {} },
-                ],
-              },
-            ].map((section, index) => (
-              <motion.div
-                key={section.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: (index + 1) * 0.1 }}
-              >
-                <h4
-                  className="mb-4 text-lg"
-                  style={{ fontWeight: 600, color: "#2D3748" }}
-                >
-                  {section.title}
-                </h4>
+            {[{ title: "Quick Links", links: [{ name: "Home", onClick: handleBackToHome }, { name: "Courses", onClick: navigateToCourses }, { name: "About Us", onClick: () => scrollToSection("about") }, { name: "Contact", onClick: () => scrollToSection("contact") }] }, { title: "Certifications", links: [{ name: "CompTIA", onClick: () => {} }, { name: "AWS", onClick: () => {} }, { name: "PMI", onClick: () => {} }, { name: "Microsoft", onClick: () => {} }] }].map((section, index) => (
+              <motion.div key={section.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (index + 1) * 0.1 }}>
+                <h4 className="mb-4 text-lg" style={{ fontWeight: 600, color: "#2D3748" }}>{section.title}</h4>
                 <ul className="space-y-2">
                   {section.links.map((link) => (
                     <li key={link.name}>
-                      <button
-                        onClick={link.onClick}
-                        className="transition-colors hover:translate-x-1 inline-block"
-                        style={{ color: "#4A5568" }}
-                      >
-                        {link.name}
-                      </button>
+                      <button onClick={link.onClick} className="transition-colors hover:translate-x-1 inline-block" style={{ color: "#4A5568" }}>{link.name}</button>
                     </li>
                   ))}
                 </ul>
               </motion.div>
             ))}
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <h4
-                className="mb-4 text-lg"
-                style={{ fontWeight: 600, color: "#2D3748" }}
-              >
-                Follow Us
-              </h4>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
+              <h4 className="mb-4 text-lg" style={{ fontWeight: 600, color: "#2D3748" }}>Follow Us</h4>
               <div className="flex gap-3 flex-wrap">
-                {[
-                  { icon: Facebook, label: "Facebook" },
-                  { icon: Twitter, label: "Twitter" },
-                  { icon: Linkedin, label: "LinkedIn" },
-                  { icon: Instagram, label: "Instagram" },
-                ].map(({ icon: Icon, label }) => (
-                  <motion.a
-                    key={label}
-                    href="#"
-                    className="w-11 h-11 rounded-xl flex items-center justify-center transition-all shadow-lg"
-                    style={{ backgroundColor: "#247AB0" }}
-                    whileHover={{
-                      scale: 1.1,
-                      rotate: 5,
-                      backgroundColor: "#1a5a85",
-                    }}
-                    whileTap={{ scale: 0.9 }}
-                  >
+                {[{ icon: Facebook, label: "Facebook" }, { icon: Twitter, label: "Twitter" }, { icon: Linkedin, label: "LinkedIn" }, { icon: Instagram, label: "Instagram" }].map(({ icon: Icon, label }) => (
+                  <motion.a key={label} href="#" className="w-11 h-11 rounded-xl flex items-center justify-center transition-all shadow-lg" style={{ backgroundColor: "#247AB0" }} whileHover={{ scale: 1.1, rotate: 5, backgroundColor: "#1a5a85" }} whileTap={{ scale: 0.9 }}>
                     <Icon className="w-5 h-5" style={{ color: "#ffffff" }} />
                   </motion.a>
                 ))}
               </div>
             </motion.div>
           </div>
-
-          <motion.div
-            className="pt-8 text-center"
-            style={{ borderTop: "1px solid #CBD5E0", color: "#4A5568" }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <p>
-              &copy; 2025 Cert-Easy. All rights reserved. | Privacy Policy |
-              Terms of Service
-            </p>
+          <motion.div className="pt-8 text-center" style={{ borderTop: "1px solid #CBD5E0", color: "#4A5568" }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+            <p>&copy; 2025 Cert-Easy. All rights reserved. | Privacy Policy | Terms of Service</p>
           </motion.div>
         </div>
       </footer>
@@ -537,102 +242,18 @@ export default function App() {
   }
 
   const courses = [
-    {
-      id: 1,
-      title: "CompTIA Security+ Certification",
-      image: security,
-      price: 299,
-      rating: 4.8,
-      students: 12450,
-      badge: "Best Seller",
-      level: "Intermediate",
-      duration: "40 hours",
-    },
-    {
-      id: 2,
-      title: "AWS Certified Solutions Architect",
-      image: cloud,
-      price: 399,
-      rating: 4.9,
-      students: 18230,
-      badge: "Popular",
-      level: "Advanced",
-      duration: "60 hours",
-    },
-    {
-      id: 3,
-      title: "Project Management Professional (PMP)",
-      image: pmp,
-      price: 349,
-      rating: 4.7,
-      students: 9870,
-      badge: "Trending",
-      level: "Professional",
-      duration: "50 hours",
-    },
-    {
-      id: 4,
-      title: "Certified Ethical Hacker (CEH)",
-      image: security,
-      price: 449,
-      rating: 4.9,
-      students: 15600,
-      badge: "Best Seller",
-      level: "Advanced",
-      duration: "45 hours",
-    },
-    {
-      id: 5,
-      title: "Microsoft Azure Fundamentals",
-      image: cloud2,
-      price: 249,
-      rating: 4.6,
-      students: 11200,
-      badge: "New",
-      level: "Beginner",
-      duration: "30 hours",
-    },
-    {
-      id: 6,
-      title: "CISSP - Information Security",
-      image: security,
-      price: 499,
-      rating: 4.8,
-      students: 8950,
-      badge: "Premium",
-      level: "Expert",
-      duration: "70 hours",
-    },
+    { id: 1, title: "CompTIA Security+ Certification", image: security, price: 299, rating: 4.8, students: 12450, badge: "Best Seller", level: "Intermediate", duration: "40 hours" },
+    { id: 2, title: "AWS Certified Solutions Architect", image: cloud, price: 399, rating: 4.9, students: 18230, badge: "Popular", level: "Advanced", duration: "60 hours" },
+    { id: 3, title: "Project Management Professional (PMP)", image: pmp, price: 349, rating: 4.7, students: 9870, badge: "Trending", level: "Professional", duration: "50 hours" },
+    { id: 4, title: "Certified Ethical Hacker (CEH)", image: security, price: 449, rating: 4.9, students: 15600, badge: "Best Seller", level: "Advanced", duration: "45 hours" },
+    { id: 5, title: "Microsoft Azure Fundamentals", image: cloud2, price: 249, rating: 4.6, students: 11200, badge: "New", level: "Beginner", duration: "30 hours" },
+    { id: 6, title: "CISSP - Information Security", image: security, price: 499, rating: 4.8, students: 8950, badge: "Premium", level: "Expert", duration: "70 hours" }
   ];
 
   const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "IT Security Specialist",
-      company: "TechCorp Inc.",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-      text: "Cert-Easy helped me pass my CompTIA Security+ on the first try! The course materials were comprehensive and the instructors were incredibly knowledgeable.",
-      rating: 5,
-    },
-    {
-      name: "Michael Chen",
-      role: "Cloud Architect",
-      company: "CloudSolutions Ltd",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-      text: "The AWS certification course exceeded my expectations. The hands-on labs and real-world scenarios were invaluable for my career advancement.",
-      rating: 5,
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "Project Manager",
-      company: "Global Enterprises",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
-      text: "I achieved my PMP certification thanks to Cert-Easy's structured approach and excellent support. Highly recommended for serious professionals!",
-      rating: 5,
-    },
+    { name: "Sarah Johnson", role: "IT Security Specialist", company: "TechCorp Inc.", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400", text: "Cert-Easy helped me pass my CompTIA Security+ on the first try! The course materials were comprehensive and the instructors were incredibly knowledgeable.", rating: 5 },
+    { name: "Michael Chen", role: "Cloud Architect", company: "CloudSolutions Ltd", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400", text: "The AWS certification course exceeded my expectations. The hands-on labs and real-world scenarios were invaluable for my career advancement.", rating: 5 },
+    { name: "Emily Rodriguez", role: "Project Manager", company: "Global Enterprises", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400", text: "I achieved my PMP certification thanks to Cert-Easy's structured approach and excellent support. Highly recommended for serious professionals!", rating: 5 }
   ];
 
   const partners = [
@@ -643,94 +264,22 @@ export default function App() {
     { name: "EC-Council", logo: "EC-Council" },
     { name: "ISC2", logo: "(ISC)²" },
     { name: "Cisco", logo: "Cisco" },
-    { name: "Google", logo: "Google" },
+    { name: "Google", logo: "Google" }
   ];
 
   const whyChooseUs = [
-    {
-      icon: Award,
-      title: "Industry-Recognized Certifications",
-      description:
-        "Gain credentials from top organizations like CompTIA, AWS, PMI, and more.",
-      color: "from-slate-600 to-slate-800",
-    },
-    {
-      icon: Users,
-      title: "Expert Instructors",
-      description:
-        "Learn from certified professionals with years of real-world experience.",
-      color: "from-teal-600 to-cyan-700",
-    },
-    {
-      icon: BookOpen,
-      title: "Comprehensive Course Materials",
-      description:
-        "Access detailed study guides, practice exams, and hands-on labs.",
-      color: "from-indigo-600 to-blue-700",
-    },
-    {
-      icon: Clock,
-      title: "Flexible Learning",
-      description:
-        "Study at your own pace with 24/7 access to all course materials.",
-      color: "from-emerald-600 to-green-700",
-    },
-    {
-      icon: Shield,
-      title: "Money-Back Guarantee",
-      description:
-        "Pass your certification exam or get your money back - we're that confident!",
-      color: "from-violet-600 to-purple-700",
-    },
-    {
-      icon: TrendingUp,
-      title: "Career Advancement",
-      description:
-        "Boost your career with certifications that employers actively seek.",
-      color: "from-amber-600 to-orange-700",
-    },
+    { icon: Award, title: "Industry-Recognized Certifications", description: "Gain credentials from top organizations like CompTIA, AWS, PMI, and more.", color: "from-slate-600 to-slate-800" },
+    { icon: Users, title: "Expert Instructors", description: "Learn from certified professionals with years of real-world experience.", color: "from-teal-600 to-cyan-700" },
+    { icon: BookOpen, title: "Comprehensive Course Materials", description: "Access detailed study guides, practice exams, and hands-on labs.", color: "from-indigo-600 to-blue-700" },
+    { icon: Clock, title: "Flexible Learning", description: "Study at your own pace with 24/7 access to all course materials.", color: "from-emerald-600 to-green-700" },
+    { icon: Shield, title: "Money-Back Guarantee", description: "Pass your certification exam or get your money back - we're that confident!", color: "from-violet-600 to-purple-700" },
+    { icon: TrendingUp, title: "Career Advancement", description: "Boost your career with certifications that employers actively seek.", color: "from-amber-600 to-orange-700" }
   ];
 
   const learningOptions = [
-    {
-      title: "Self-Paced Learning",
-      description:
-        "Access all course materials instantly and learn on your own schedule",
-      icon: Clock,
-      features: [
-        "Lifetime access",
-        "Download resources",
-        "Mobile learning",
-        "Study anywhere",
-      ],
-      gradient: "from-slate-700 to-slate-900",
-    },
-    {
-      title: "Live Online Classes",
-      description:
-        "Join interactive sessions with expert instructors and fellow students",
-      icon: Users,
-      features: [
-        "Real-time interaction",
-        "Q&A sessions",
-        "Group discussions",
-        "Scheduled classes",
-      ],
-      gradient: "from-teal-600 to-cyan-700",
-    },
-    {
-      title: "Bootcamp Programs",
-      description:
-        "Intensive training designed to prepare you for certification in weeks",
-      icon: TrendingUp,
-      features: [
-        "Fast-track learning",
-        "Daily sessions",
-        "Exam preparation",
-        "Guaranteed results",
-      ],
-      gradient: "from-indigo-600 to-blue-700",
-    },
+    { title: "Self-Paced Learning", description: "Access all course materials instantly and learn on your own schedule", icon: Clock, features: ["Lifetime access", "Download resources", "Mobile learning", "Study anywhere"], gradient: "from-slate-700 to-slate-900" },
+    { title: "Live Online Classes", description: "Join interactive sessions with expert instructors and fellow students", icon: Users, features: ["Real-time interaction", "Q&A sessions", "Group discussions", "Scheduled classes"], gradient: "from-teal-600 to-cyan-700" },
+    { title: "Bootcamp Programs", description: "Intensive training designed to prepare you for certification in weeks", icon: TrendingUp, features: ["Fast-track learning", "Daily sessions", "Exam preparation", "Guaranteed results"], gradient: "from-indigo-600 to-blue-700" }
   ];
 
   const certificates = [
@@ -739,7 +288,7 @@ export default function App() {
     { name: "PMP", provider: "PMI" },
     { name: "CISSP", provider: "(ISC)²" },
     { name: "CEH", provider: "EC-Council" },
-    { name: "Azure Fundamentals", provider: "Microsoft" },
+    { name: "Azure Fundamentals", provider: "Microsoft" }
   ];
 
   return (
@@ -748,111 +297,41 @@ export default function App() {
       <div className="min-h-screen bg-white overflow-x-hidden">
         <section className="relative bg-gradient-to-br from-slate-50 via-white to-teal-50 py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <motion.div
-              className="absolute top-20 -left-20 w-72 h-72 bg-slate-400/10 rounded-full blur-3xl"
-              animate={{ x: [0, 100, 0], y: [0, 50, 0] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div
-              className="absolute bottom-20 -right-20 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl"
-              animate={{ x: [0, -100, 0], y: [0, -50, 0] }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            />
+            <motion.div className="absolute top-20 -left-20 w-72 h-72 bg-slate-400/10 rounded-full blur-3xl" animate={{ x: [0, 100, 0], y: [0, 50, 0] }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
+            <motion.div className="absolute bottom-20 -right-20 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl" animate={{ x: [0, -100, 0], y: [0, -50, 0] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} />
           </div>
-
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <Badge
-                    className="bg-gradient-to-r from-slate-700 to-slate-900 text-white mb-4 shadow-lg"
-                    style={{ fontWeight: 600 }}
-                  >
+              <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                  <Badge className="bg-gradient-to-r from-slate-700 to-slate-900 text-white mb-4 shadow-lg" style={{ fontWeight: 600 }}>
                     <Sparkles className="w-4 h-4 mr-1" />
                     #1 Certification Training Platform
                   </Badge>
                 </motion.div>
-
-                <motion.h1
-                  className="text-4xl sm:text-5xl lg:text-6xl mb-6 text-slate-900"
-                  style={{ fontWeight: 700, lineHeight: 1.2 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  Advance Your Career with{" "}
-                  <span className="bg-gradient-to-r from-slate-700 via-teal-600 to-indigo-700 bg-clip-text text-transparent">
-                    Industry Certifications
-                  </span>
+                <motion.h1 className="text-4xl sm:text-5xl lg:text-6xl mb-6 text-slate-900" style={{ fontWeight: 700, lineHeight: 1.2 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+                  Advance Your Career with <span className="bg-gradient-to-r from-slate-700 via-teal-600 to-indigo-700 bg-clip-text text-transparent">Industry Certifications</span>
                 </motion.h1>
-
-                <motion.p
-                  className="text-lg sm:text-xl text-slate-600 mb-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  Master the skills you need to succeed with expert-led courses,
-                  comprehensive study materials, and guaranteed exam
-                  preparation.
+                <motion.p className="text-lg sm:text-xl text-slate-600 mb-8" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                  Master the skills you need to succeed with expert-led courses, comprehensive study materials, and guaranteed exam preparation.
                 </motion.p>
-
-                <motion.div
-                  className="flex flex-col sm:flex-row gap-4 mb-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      onClick={navigateToCourses}
-                      className="bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black text-white px-8 py-6 text-lg shadow-xl shadow-slate-500/30 w-full sm:w-auto group"
-                    >
+                <motion.div className="flex flex-col sm:flex-row gap-4 mb-8" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button onClick={navigateToCourses} className="bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black text-white px-8 py-6 text-lg shadow-xl shadow-slate-500/30 w-full sm:w-auto group">
                       Explore Courses
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      variant="outline"
-                      className="border-2 border-slate-700 text-slate-700 hover:bg-slate-50 px-8 py-6 text-lg w-full sm:w-auto group"
-                      onClick={handleWhatsAppClick}
-                    >
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button variant="outline" className="border-2 border-slate-700 text-slate-700 hover:bg-slate-50 px-8 py-6 text-lg w-full sm:w-auto group" onClick={handleWhatsAppClick}>
                       <MessageCircle className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                       Contact Us
                     </Button>
                   </motion.div>
                 </motion.div>
-
-                <motion.div
-                  className="flex items-center gap-6 flex-wrap"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  {[
-                    { icon: CheckCircle2, text: "Money-back guarantee" },
-                    { icon: CheckCircle2, text: "Lifetime access" },
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      className="flex items-center gap-2"
-                      whileHover={{ scale: 1.05 }}
-                    >
+                <motion.div className="flex items-center gap-6 flex-wrap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
+                  {[{ icon: CheckCircle2, text: "Money-back guarantee" }, { icon: CheckCircle2, text: "Lifetime access" }].map((item, index) => (
+                    <motion.div key={index} className="flex items-center gap-2" whileHover={{ scale: 1.05 }}>
                       <item.icon className="w-5 h-5 text-emerald-600" />
                       <span className="text-slate-700">{item.text}</span>
                     </motion.div>
